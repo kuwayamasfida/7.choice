@@ -1,0 +1,177 @@
+/* ======================== */
+/* 💎 CSS 変数定義 */
+/* ======================== */
+:root {
+  --video-aspect-ratio: 56.25%; /* 16:9 */
+
+  /* ======================== */
+  /* CTA：通常時 */
+  /* ======================== */
+  --cta-bg-color: #007bff;
+  --cta-text-color: #fff;
+  --cta-opacity-enabled: 0.6;
+  --cta-opacity-disabled: 0.4;
+
+  /* 🔑 サイズ固定 */
+  --cta-width: 220px;
+  --cta-height: 80px;
+  --cta-font-size: 18px;
+  
+  --cta-border-radius: 6px;
+  --cta-bottom-position: 10%;
+  --cta-gap: 30px;
+
+  /* ======================== */
+  /* CTA：全画面時 */
+  /* ======================== */
+  --cta-fs-width: 420px;
+  --cta-fs-height: 150px;
+  --cta-fs-font-size: 28px;
+  --cta-fs-bottom-position: 10%;
+  --cta-fs-gap: 60px;
+
+  /* ======================== */
+  /* Fullscreen */
+  /* ======================== */
+  --fs-bg-color: #ff9900;
+  --fs-font-size: 14px;
+}
+
+/* ======================== */
+/* 基本 */
+/* ======================== */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f5f5f5;
+}
+
+.video-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #000;
+}
+
+/* ======================== */
+/* 動画 */
+/* ======================== */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: var(--video-aspect-ratio);
+  background: #000;
+}
+
+#myVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ======================== */
+/* 全画面ボタン */
+/* ======================== */
+.fullscreen-button-top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+}
+
+#btn-fullscreen {
+  padding: 6px 12px;
+  font-size: var(--fs-font-size);
+  background: var(--fs-bg-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--cta-border-radius);
+  cursor: pointer;
+}
+
+/* ======================== */
+/* CTA（通常時） */
+/* ======================== */
+.cta-buttons-overlay-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: var(--cta-bottom-position);
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--cta-gap);
+
+  /* 🔑 シークバー優先 */
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+/* CTAボタン本体 */
+.cta-buttons-overlay-bottom button {
+  pointer-events: auto;
+
+  width: var(--cta-width);
+  height: var(--cta-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--cta-font-size);
+  border-radius: var(--cta-border-radius);
+  border: 2px solid var(--cta-bg-color);
+  background: var(--cta-bg-color);
+  color: var(--cta-text-color);
+  cursor: pointer;
+  opacity: var(--cta-opacity-enabled);
+  transition: opacity 0.3s, background-color 0.3s;
+
+  /* 文字制御 */
+  white-space: nowrap;
+  text-align: center;
+}
+
+.cta-buttons-overlay-bottom button:disabled {
+  background: #aaa;
+  border-color: #aaa;
+  cursor: default;
+  opacity: var(--cta-opacity-disabled);
+}
+
+.cta-buttons-overlay-bottom button:not(:disabled):hover {
+  background: #0056b3;
+  border-color: #0056b3;
+}
+
+/* ======================== */
+/* 全画面時 */
+/* ======================== */
+.video-wrapper:fullscreen {
+  padding-bottom: 0;
+  height: 100%;
+}
+
+.video-wrapper:fullscreen #myVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ======================== */
+/* CTA（全画面時） */
+/* ======================== */
+.video-wrapper:fullscreen .cta-buttons-overlay-bottom {
+  bottom: var(--cta-fs-bottom-position);
+  gap: var(--cta-fs-gap);
+}
+
+.video-wrapper:fullscreen .cta-buttons-overlay-bottom button {
+  width: var(--cta-fs-width);
+  height: var(--cta-fs-height);
+  font-size: var(--cta-fs-font-size);
+}

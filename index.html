@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>インタラクティブ動画プレイヤー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="video-container">
+  <div class="video-wrapper">
+
+    <video id="myVideo" controls controlslist="nodownload nofullscreen novolume noremoteplayback">
+      <source src="動画④情報の選択.mp4" type="video/mp4">
+      お使いのブラウザは動画タグをサポートしていません。
+    </video>
+
+    <!-- 全画面ボタン -->
+    <div class="fullscreen-button-top-right">
+      <button id="btn-fullscreen">全画面</button>
+    </div>
+
+    <!-- ▼ CTAボタン（動画内・下部・横並び） -->
+    <div class="cta-buttons-overlay-bottom">
+      <button id="btn-start" data-url="https://kuwayamasfida.github.io/-3/" disabled>
+        最初から
+      </button>
+      <button id="btn-contents" data-url="https://kuwayamasfida.github.io/-5.mokuji/" disabled>
+        目次
+      </button>
+      <button id="btn-end" data-url="https://www.sfidax.jp/" disabled>
+        終了
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

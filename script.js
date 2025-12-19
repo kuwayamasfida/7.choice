@@ -9,9 +9,9 @@ const fullscreenTarget = document.querySelector('.video-wrapper');
    CTAボタンの表示タイミング
 ===================================== */
 const ctaTimings = {
-  'btn-start':    { start: 5,  end: 15 },
-  'btn-contents': { start: 5,  end: 15 },
-  'btn-end':      { start: 5,  end: 15 }
+  'btn-start':    { start: 10,  end: 20 },
+  'btn-contents': { start: 10,  end: 20 },
+  'btn-end':      { start: 10,  end: 20 }
 };
 
 function updateButtonState() {
